@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://u3mdajl6eglj"]
 
 [ext_resource type="Texture2D" uid="uid://dyskjno3aphkm" path="res://Assets/flappybird_aesthetics/BirdHero.png" id="1_lkv7d"]
+[ext_resource type="Script" uid="uid://dh7pb2j5d0fpi" path="res://Scenes/Character.cs" id="1_ushfy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ushfy"]
 atlas = ExtResource("1_lkv7d")
@@ -28,7 +29,8 @@ animations = [{
 radius = 33.0
 height = 113.0
 
-[node name="Area2D" type="Area2D" unique_id=384211505]
+[node name="Player" type="Area2D" unique_id=384211505]
+script = ExtResource("1_ushfy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=589977546]

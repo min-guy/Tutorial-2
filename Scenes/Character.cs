@@ -1,42 +1,48 @@
 using Godot;
-using System;
-using System.Numerics;
 
-public partial class Character : Area2D
+public partial class Character : RigidBody2D
 {
 	[Export]
-	public float upForce = 40f; // Upward force of flap
+	public float upForce = 200.0f; // Upward force of flapping
 
 	private bool isDead = false;
 
 	private AnimatedSprite2D anim;
 
-	private CollisionShape2D coll;
-
-	public Godot.Vector2 ScreenSize; // the size of the game window
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
-		ScreenSize = GetViewportRect().Size;
-		
+	{	
 		anim = GetNode<AnimatedSprite2D>(new NodePath("AnimatedSprite2D"));
 
-		coll = GetNode<CollisionShape2D>(new NodePath("CollisionShape2D"));
+		GameSignals.Instance.KillPlayer += Die;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(isDead == false)
+		if (isDead) return;
+
+		if (Input.IsActionJustPressed("jump"))
 		{
-			if (Input.IsActionJustPressed("jump"))
-			{
-				anim.Play("jump");
+			anim.Play("jump");
+			// Forcing it to always restart (instead of continuing the animation while continually pressing jump)
+			anim.Frame = 0;
 
-			}
+			anim.Rotation = Mathf.DegToRad(-20);
+
+			// Apply upward force to the flappy bird.
+			LinearVelocity = new Vector2(0, -upForce);
 		}
-		Godot.Vector2 velocity = Godot.Vector2.Zero;
 
+		anim.Rotation = Mathf.Lerp(anim.Rotation, Mathf.DegToRad(30), (float)delta * 1.5f);
+	}
+
+	public void Die()
+	{
+		LinearVelocity = Vector2.Zero;
+
+		isDead = true;
+
+		anim.Play("dead");
 	}
 }

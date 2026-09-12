@@ -3,24 +3,36 @@
 [ext_resource type="Texture2D" uid="uid://dyskjno3aphkm" path="res://Assets/flappybird_aesthetics/BirdHero.png" id="1_lkv7d"]
 [ext_resource type="Script" uid="uid://dh7pb2j5d0fpi" path="res://Scenes/Character.cs" id="1_ushfy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ushfy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nytcm"]
 atlas = ExtResource("1_lkv7d")
-region = Rect2(0, 0, 128, 128)
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owm7s"]
 atlas = ExtResource("1_lkv7d")
 region = Rect2(128, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ushfy"]
+atlas = ExtResource("1_lkv7d")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4rkw1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ushfy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_owm7s")
+"texture": SubResource("AtlasTexture_nytcm")
 }],
 "loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owm7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ushfy")
+}],
+"loop": 0,
 "name": &"jump",
 "speed": 5.0
 }]
@@ -29,8 +41,10 @@ animations = [{
 radius = 33.0
 height = 113.0
 
-[node name="Player" type="Area2D" unique_id=384211505]
+[node name="Player" type="RigidBody2D" unique_id=1936030434]
+linear_damp_mode = 1
 script = ExtResource("1_ushfy")
+upForce = 280.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=589977546]

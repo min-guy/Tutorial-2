@@ -5,10 +5,13 @@ using System.Numerics;
 public partial class Character : Area2D
 {
 	[Export]
-	public int JumpSpeed {get; set;} = 400; // the speed of the character when jumping (pixels/sec)
+	public float upForce = 40f; // Upward force of flap
 
-	[Export]
-	private Godot.Vector2 FallSpeed {get; set;} = new Godot.Vector2(2, -10); // the speed of the character when jumping (pixels/sec)
+	private bool isDead = false;
+
+	private AnimatedSprite2D anim;
+
+	private CollisionShape2D coll;
 
 	public Godot.Vector2 ScreenSize; // the size of the game window
 
@@ -16,11 +19,23 @@ public partial class Character : Area2D
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
+		
+		anim = GetNode<AnimatedSprite2D>(new NodePath("AnimatedSprite2D"));
+
+		coll = GetNode<CollisionShape2D>(new NodePath("CollisionShape2D"));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(isDead == false)
+		{
+			if (Input.IsActionJustPressed("jump"))
+			{
+				anim.Play("jump");
+
+			}
+		}
 		Godot.Vector2 velocity = Godot.Vector2.Zero;
 
 	}

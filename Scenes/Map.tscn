@@ -5,9 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://gpapvbvsnd0g" path="res://Assets/flappybird_aesthetics/SkyTileSprite.png" id="2_7yn8b"]
 [ext_resource type="Script" uid="uid://clvvpcya7e0jl" path="res://Scripts/Parallax2d.cs" id="2_qumfl"]
 [ext_resource type="Texture2D" uid="uid://bjb0ske1qwa75" path="res://Assets/flappybird_aesthetics/GrassThinSprite.png" id="4_r08cw"]
+[ext_resource type="FontFile" uid="uid://cq5pwiuopkobq" path="res://Assets/flappybird_aesthetics/LuckiestGuy.ttf" id="6_00287"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12mdx"]
 size = Vector2(2050, 250)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3x3eq"]
+font = ExtResource("6_00287")
+font_size = 64
 
 [node name="Map" type="Node2D" unique_id=1906563319]
 script = ExtResource("1_r08cw")
@@ -33,7 +38,6 @@ centered = false
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=946221774 groups=["collisions"]]
 top_level = true
-position = Vector2(0, 130)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1365558800]
 position = Vector2(1020, 970)
@@ -43,3 +47,22 @@ shape = SubResource("RectangleShape2D_12mdx")
 position = Vector2(0, 575)
 texture = ExtResource("4_r08cw")
 centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129305554]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1205060748]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.9
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Score: 
+"
+label_settings = SubResource("LabelSettings_3x3eq")
+horizontal_alignment = 1
+vertical_alignment = 2

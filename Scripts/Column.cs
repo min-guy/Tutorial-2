@@ -35,6 +35,7 @@ public partial class Column : Node2D
 		if (body is Character character)
 		{
 			character.incrementScore();
+			GameSignals.Instance.EmitSignal(GameSignals.SignalName.ScoreUpdate);
 		}
 	}
 

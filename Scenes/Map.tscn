@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://gpapvbvsnd0g" path="res://Assets/flappybird_aesthetics/SkyTileSprite.png" id="2_7yn8b"]
 [ext_resource type="Script" uid="uid://clvvpcya7e0jl" path="res://Scripts/Parallax2d.cs" id="2_qumfl"]
 [ext_resource type="Texture2D" uid="uid://bjb0ske1qwa75" path="res://Assets/flappybird_aesthetics/GrassThinSprite.png" id="4_r08cw"]
-[ext_resource type="Script" uid="uid://bloy0w0ckutka" path="res://Scripts/UILayer.cs" id="6_5t7yc"]
 [ext_resource type="FontFile" uid="uid://cq5pwiuopkobq" path="res://Assets/flappybird_aesthetics/LuckiestGuy.ttf" id="6_00287"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12mdx"]
@@ -53,7 +52,6 @@ texture = ExtResource("4_r08cw")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129305554]
-script = ExtResource("6_5t7yc")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1205060748]
 top_level = true

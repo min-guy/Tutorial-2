@@ -7,6 +7,10 @@ public partial class GameManager : Node2D
 	private PackedScene columnScene;
 	private Vector2 spawnColumnLocation;
 
+	private Label text;
+
+	private Character p1;
+	private Character p2;
 	public override void _Ready()
 	{
 		var timer = new Timer();
@@ -21,6 +25,15 @@ public partial class GameManager : Node2D
 		spawnColumnLocation = spawnColumnLocationNode.Position;
 
 		AddChild(timer);
+
+		// Get text node
+		text = GetNode<Label>(new NodePath("CanvasLayer/Label"));
+
+		// Get player nodes
+		p1 = GetNode<Character>(new NodePath("Player"));
+		p2 = GetNode<Character>(new NodePath("Player2"));
+		// Attach signal to update Score
+		GameSignals.Instance.ScoreUpdate += updateScore;
 	}
 
 	private void SpawnColumn()
@@ -32,5 +45,10 @@ public partial class GameManager : Node2D
 		column.Position = new Vector2(spawnColumnLocation.X, height);
 
 		AddChild(column);
+	}
+
+	private void updateScore()
+	{
+		text.Text = "Score: " + (p1.getScore() + p2.getScore());
 	}
 }

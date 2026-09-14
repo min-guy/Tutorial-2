@@ -67,6 +67,10 @@ public partial class Character : RigidBody2D
 	public void incrementScore()
 	{
 		score += 100;
-		GD.Print(score);
+	}
+
+	public int getScore()
+	{
+		return score;
 	}
 }

@@ -18,7 +18,7 @@ script = ExtResource("1_u5l0b")
 [node name="TopColumn" type="Node2D" parent="." unique_id=422419608 groups=["collisions"]]
 position = Vector2(0, -700)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TopColumn" unique_id=1986067661]
+[node name="StaticBody2D" type="StaticBody2D" parent="TopColumn" unique_id=1986067661 groups=["collisions"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopColumn/StaticBody2D" unique_id=1568862212]
 shape = SubResource("RectangleShape2D_3x3eq")
@@ -30,7 +30,7 @@ texture = ExtResource("2_rkhxb")
 [node name="BottomCollumn" type="Node2D" parent="." unique_id=683670745 groups=["collisions"]]
 position = Vector2(0, 700)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BottomCollumn" unique_id=874055847]
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomCollumn" unique_id=874055847 groups=["collisions"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomCollumn/StaticBody2D" unique_id=691708174]
 shape = SubResource("RectangleShape2D_4rkw1")

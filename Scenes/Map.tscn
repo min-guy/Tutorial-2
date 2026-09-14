@@ -1,8 +1,42 @@
 [gd_scene format=3 uid="uid://csafi0ntvay3g"]
 
 [ext_resource type="PackedScene" uid="uid://u3mdajl6eglj" path="res://Scenes/character.tscn" id="1_s486e"]
+[ext_resource type="Texture2D" uid="uid://gpapvbvsnd0g" path="res://Assets/flappybird_aesthetics/SkyTileSprite.png" id="2_7yn8b"]
+[ext_resource type="Script" uid="uid://clvvpcya7e0jl" path="res://Scripts/Parallax2d.cs" id="2_qumfl"]
+[ext_resource type="Texture2D" uid="uid://bjb0ske1qwa75" path="res://Assets/flappybird_aesthetics/GrassThinSprite.png" id="4_r08cw"]
+[ext_resource type="PackedScene" uid="uid://cwkpgyp5takwg" path="res://Scenes/column.tscn" id="5_r08cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12mdx"]
+size = Vector2(2050, 250)
 
 [node name="Map" type="Node2D" unique_id=1906563319]
 
 [node name="Player" parent="." unique_id=1936030434 instance=ExtResource("1_s486e")]
-position = Vector2(640, 360)
+top_level = true
+position = Vector2(960, 540)
+contact_monitor = true
+max_contacts_reported = 4
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=980490616]
+repeat_size = Vector2(1910, 0)
+autoscroll = Vector2(-200, 0)
+script = ExtResource("2_qumfl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=755748251]
+scale = Vector2(0.93603516, 1.0576172)
+texture = ExtResource("2_7yn8b")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=946221774 groups=["collisions"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1365558800]
+position = Vector2(1020, 970)
+shape = SubResource("RectangleShape2D_12mdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=216185084]
+position = Vector2(0, 575)
+texture = ExtResource("4_r08cw")
+centered = false
+
+[node name="Collumn" parent="." unique_id=871014186 groups=["collisions"] instance=ExtResource("5_r08cw")]
+position = Vector2(1920, 700)

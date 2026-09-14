@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cwkpgyp5takwg"]
+
+[ext_resource type="Script" uid="uid://ml1hmiqbe3up" path="res://Scripts/Column.cs" id="1_u5l0b"]
+[ext_resource type="Texture2D" uid="uid://da74dvpndrcwi" path="res://Assets/flappybird_aesthetics/ColumnSprite.png" id="2_rkhxb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x3eq"]
+size = Vector2(100, 1020)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rkw1"]
+size = Vector2(100, 1020)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e7mv"]
+size = Vector2(100, 400)
+
+[node name="Collumn" type="Node2D" unique_id=871014186]
+script = ExtResource("1_u5l0b")
+
+[node name="TopColumn" type="Node2D" parent="." unique_id=422419608 groups=["collisions"]]
+position = Vector2(0, -700)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TopColumn" unique_id=1986067661]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopColumn/StaticBody2D" unique_id=1568862212]
+shape = SubResource("RectangleShape2D_3x3eq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TopColumn" unique_id=1624899027]
+rotation = 3.1415927
+texture = ExtResource("2_rkhxb")
+
+[node name="BottomCollumn" type="Node2D" parent="." unique_id=683670745 groups=["collisions"]]
+position = Vector2(0, 700)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomCollumn" unique_id=874055847]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomCollumn/StaticBody2D" unique_id=691708174]
+shape = SubResource("RectangleShape2D_4rkw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomCollumn" unique_id=1956893649]
+texture = ExtResource("2_rkhxb")
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=864572858]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=995861906]
+shape = SubResource("RectangleShape2D_2e7mv")

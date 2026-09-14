@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u3mdajl6eglj"]
 
 [ext_resource type="Texture2D" uid="uid://dyskjno3aphkm" path="res://Assets/flappybird_aesthetics/BirdHero.png" id="1_lkv7d"]
-[ext_resource type="Script" uid="uid://dh7pb2j5d0fpi" path="res://Scenes/Character.cs" id="1_ushfy"]
+[ext_resource type="Script" uid="uid://dh7pb2j5d0fpi" path="res://Scripts/Character.cs" id="1_ushfy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nytcm"]
 atlas = ExtResource("1_lkv7d")
@@ -44,7 +44,6 @@ height = 113.0
 [node name="Player" type="RigidBody2D" unique_id=1936030434]
 linear_damp_mode = 1
 script = ExtResource("1_ushfy")
-upForce = 280.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=589977546]

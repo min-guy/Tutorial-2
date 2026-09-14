@@ -9,12 +9,17 @@ public partial class Character : RigidBody2D
 
 	private AnimatedSprite2D anim;
 
+	private int score = 0;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{	
 		anim = GetNode<AnimatedSprite2D>(new NodePath("AnimatedSprite2D"));
 
+		//Connect the signals to their respective functions
 		GameSignals.Instance.KillPlayer += Die;
+
+		BodyEntered += OnBodyEntered;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +42,19 @@ public partial class Character : RigidBody2D
 		anim.Rotation = Mathf.Lerp(anim.Rotation, Mathf.DegToRad(30), (float)delta * 1.5f);
 	}
 
+	private void OnBodyEntered(Node body)
+	{
+		if (isDead) {
+			return;
+		}
+
+		if (body.IsInGroup("collisions"))
+		{
+			// emit signal that player has died
+			GameSignals.Instance.EmitSignal(GameSignals.SignalName.KillPlayer);
+		}
+	}
+
 	public void Die()
 	{
 		LinearVelocity = Vector2.Zero;
@@ -44,5 +62,10 @@ public partial class Character : RigidBody2D
 		isDead = true;
 
 		anim.Play("dead");
+	}
+
+	public void incrementScore()
+	{
+		score += 100;
 	}
 }

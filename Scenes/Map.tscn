@@ -26,6 +26,9 @@ position = Vector2(960, 540)
 contact_monitor = true
 max_contacts_reported = 4
 
+[node name="Player2" parent="." unique_id=878571650 instance=ExtResource("1_s486e")]
+collision_layer = 2
+
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=980490616]
 repeat_size = Vector2(1910, 0)
 autoscroll = Vector2(-200, 0)

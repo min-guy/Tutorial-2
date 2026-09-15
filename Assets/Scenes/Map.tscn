@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://csafi0ntvay3g"]
+
+[ext_resource type="Script" uid="uid://b4dlrlhd7gqxg" path="res://Assets/Scripts/GameManager.cs" id="1_47en4"]
+[ext_resource type="PackedScene" uid="uid://u3mdajl6eglj" path="res://Assets/Scenes/character.tscn" id="2_4hua8"]
+[ext_resource type="Script" uid="uid://clvvpcya7e0jl" path="res://Assets/Scripts/Parallax2d.cs" id="3_17ifn"]
+[ext_resource type="Texture2D" uid="uid://gpapvbvsnd0g" path="res://Assets/flappybird_aesthetics/SkyTileSprite.png" id="4_it2g8"]
+[ext_resource type="Texture2D" uid="uid://bjb0ske1qwa75" path="res://Assets/flappybird_aesthetics/GrassThinSprite.png" id="5_hv05q"]
+[ext_resource type="FontFile" uid="uid://cq5pwiuopkobq" path="res://Assets/flappybird_aesthetics/LuckiestGuy.ttf" id="6_pg1eo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12mdx"]
+size = Vector2(2050, 250)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3x3eq"]
+font = ExtResource("6_pg1eo")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_47en4"]
+font = ExtResource("6_pg1eo")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_4rkw1"]
+font = ExtResource("6_pg1eo")
+font_size = 64
+
+[node name="Map" type="Node2D" unique_id=1906563319]
+script = ExtResource("1_47en4")
+PlayerScene = ExtResource("2_4hua8")
+
+[node name="SpawnColumnLocation" type="Node2D" parent="." unique_id=116692769]
+position = Vector2(2066, 554)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=980490616]
+repeat_size = Vector2(1910, 0)
+autoscroll = Vector2(-200, 0)
+script = ExtResource("3_17ifn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=755748251]
+scale = Vector2(0.93603516, 1.0576172)
+texture = ExtResource("4_it2g8")
+centered = false
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=946221774 groups=["collisions"]]
+top_level = true
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1365558800]
+position = Vector2(1020, 970)
+shape = SubResource("RectangleShape2D_12mdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=216185084]
+position = Vector2(0, 575)
+texture = ExtResource("5_hv05q")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129305554]
+
+[node name="Score" type="Label" parent="CanvasLayer" unique_id=1205060748]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.9
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Score: 0
+"
+label_settings = SubResource("LabelSettings_3x3eq")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=39406689]
+layout_mode = 3
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.3
+offset_top = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1312630300]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverMsg" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=315383680]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_47en4")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=1990740869]
+layout_mode = 2
+text = "Flap to restart
+"
+label_settings = SubResource("LabelSettings_4rkw1")
+horizontal_alignment = 1

@@ -16,10 +16,12 @@ public partial class GameSignals : Node
     //
     
     [Signal]
-    public delegate void GameOverEventHandler();
+    public delegate void GameOverEventHandler(); // signal for when game is over
 
     [Signal]
-    public delegate void ScoreUpdateEventHandler();
+    public delegate void ScoreUpdateEventHandler(); // signal to update score board
+    [Signal]
+    public delegate void RestartEventHandler(); // signal to restart game
 
     public override void _Ready()
     {

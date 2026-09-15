@@ -14,10 +14,10 @@ public partial class GameSignals : Node
     // or 
     // "EmitSignal(SignalName.XYZ, ..any args go here)" to invoke the callback, calling all connected listeners.
     //
-
-    [Signal]
-    public delegate void KillPlayerEventHandler();
     
+    [Signal]
+    public delegate void GameOverEventHandler();
+
     [Signal]
     public delegate void ScoreUpdateEventHandler();
 

@@ -3,21 +3,27 @@ using Godot;
 public partial class Character : RigidBody2D
 {
 	[Export]
+	public int PlayerId {get; set;} = 1;
+	[Export]
 	public float upForce = 200.0f; // Upward force of flapping
 
-	private bool isDead = false;
+	public bool isDead = false;
 
 	private AnimatedSprite2D anim;
 
 	private int score = 0;
 
+	private string jumpAct; //saves the keybing for the jump action of each player
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{	
+		//set the jump button based on player ID
+		jumpAct = $"p{PlayerId}_jump";
+
 		anim = GetNode<AnimatedSprite2D>(new NodePath("AnimatedSprite2D"));
 
 		//Connect the signals to their respective functions
-		GameSignals.Instance.KillPlayer += Die;
 
 		BodyEntered += OnBodyEntered;
 	}
@@ -27,7 +33,7 @@ public partial class Character : RigidBody2D
 	{
 		if (isDead) return;
 
-		if (Input.IsActionJustPressed("jump"))
+		if (Input.IsActionJustPressed(jumpAct))
 		{
 			anim.Play("jump");
 			// Forcing it to always restart (instead of continuing the animation while continually pressing jump)
@@ -50,8 +56,7 @@ public partial class Character : RigidBody2D
 
 		if (body.IsInGroup("collisions"))
 		{
-			// emit signal that player has died
-			GameSignals.Instance.EmitSignal(GameSignals.SignalName.KillPlayer);
+			Die();
 		}
 	}
 

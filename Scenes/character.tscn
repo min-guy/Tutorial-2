@@ -42,6 +42,9 @@ radius = 33.0
 height = 113.0
 
 [node name="Player" type="RigidBody2D" unique_id=1936030434]
+collision_mask = 2
+contact_monitor = true
+max_contacts_reported = 2
 linear_damp_mode = 1
 script = ExtResource("1_ushfy")
 metadata/_edit_group_ = true

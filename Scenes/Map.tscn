@@ -16,18 +16,10 @@ font_size = 64
 
 [node name="Map" type="Node2D" unique_id=1906563319]
 script = ExtResource("1_r08cw")
+PlayerScene = ExtResource("1_s486e")
 
 [node name="SpawnColumnLocation" type="Node2D" parent="." unique_id=116692769]
 position = Vector2(2066, 554)
-
-[node name="Player" parent="." unique_id=1936030434 instance=ExtResource("1_s486e")]
-top_level = true
-position = Vector2(960, 540)
-contact_monitor = true
-max_contacts_reported = 4
-
-[node name="Player2" parent="." unique_id=878571650 instance=ExtResource("1_s486e")]
-collision_layer = 2
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=980490616]
 repeat_size = Vector2(1910, 0)
@@ -41,6 +33,7 @@ centered = false
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=946221774 groups=["collisions"]]
 top_level = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1365558800]
 position = Vector2(1020, 970)
@@ -64,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Score: 
+text = "Score: 0
 "
 label_settings = SubResource("LabelSettings_3x3eq")
 horizontal_alignment = 1

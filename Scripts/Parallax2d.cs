@@ -10,7 +10,7 @@ public partial class Parallax2d : Parallax2D
 		this.Autoscroll = new Vector2(-200, 0);
 
 		// Links to endLoop function to end background scroll when dead
-		GameSignals.Instance.KillPlayer += endLoop; 
+		GameSignals.Instance.GameOver += endLoop; 
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
